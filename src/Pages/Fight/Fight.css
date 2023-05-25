@@ -1,0 +1,15 @@
+.selection-holder {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 200px;
+}
+
+.selection-card {
+  display: flex;
+  flex-direction: column;
+}
+
