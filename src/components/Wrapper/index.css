@@ -1,0 +1,10 @@
+nav {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+}
+nav a {
+    margin: 1rem;
+    font-size: 1.2rem;
+    text-decoration: none;
+}
