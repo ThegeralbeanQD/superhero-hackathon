@@ -39,18 +39,27 @@ const Fight = () => {
     let selectedHeroStats = selectedHero.powerstats
     let randomHeroStats = randomHeroData.powerstats
     console.log(selectedHeroStats);
+    console.log(randomHeroData);
     console.log(randomHeroStats);
 
     let totalSelectedHeroPower = 0;
     let totalRandomHeroPower = 0;
 
     for (let stat in selectedHeroStats) {
-      totalSelectedHeroPower += parseInt(selectedHeroStats[stat]);
+      const power = selectedHeroStats[stat];
+      totalSelectedHeroPower += power !== null && !isNaN(power) ? parseInt(power) : 0;
     }
-
+    if (totalSelectedHeroPower === null || isNaN(totalSelectedHeroPower)) {
+      totalSelectedHeroPower = 1;
+    }
+    
     for (let stat in randomHeroStats) {
-      totalRandomHeroPower += parseInt(randomHeroStats[stat]);
+      const power = randomHeroStats[stat];
+      totalRandomHeroPower += power !== null && !isNaN(power) ? parseInt(power) : 0;
     }
+    if (totalRandomHeroPower === null || isNaN(totalRandomHeroPower)) {
+      totalRandomHeroPower = 1;
+    }    
 
     console.log('Total Power of Selected Hero:', totalSelectedHeroPower);
     console.log('Total Power of Random Hero:', totalRandomHeroPower);
