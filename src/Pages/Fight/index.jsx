@@ -4,9 +4,11 @@ import './Fight.css';
 
 const Fight = () => {
   const [selectedHero, setSelectedHero] = useState(null);
-
   const [image, setImage] = useState('');
   const [data, setData] = useState([]);
+  const [showTotalPower, setShowTotalPower] = useState(false);
+  const [totalSelectedHeroPower, setTotalSelectedHeroPower] = useState(0);
+  const [totalRandomHeroPower, setTotalRandomHeroPower] = useState(0);
 
   const handleSearch = async (inputText) => {
     const response = await fetch(
@@ -15,7 +17,7 @@ const Fight = () => {
     const data = await response.json();
     setData(data.results);
     if (data.results.length > 1) {
-      setSelectedHero(null); // Reset selected hero if multiple options available
+      setSelectedHero(null);
       setImage('');
       setSelectedHero(null);
     } else {
@@ -29,6 +31,7 @@ const Fight = () => {
     setImage(hero.image.url);
   };
 
+
   const handleStart = async () => {
     let id = Math.floor(Math.random() * 731) + 1;
     const response = await fetch(
@@ -36,35 +39,30 @@ const Fight = () => {
     );
     const randomHeroData = await response.json();
     
-    let selectedHeroStats = selectedHero.powerstats
-    let randomHeroStats = randomHeroData.powerstats
-    console.log(selectedHeroStats);
-    console.log(randomHeroData);
-    console.log(randomHeroStats);
-
-    let totalSelectedHeroPower = 0;
-    let totalRandomHeroPower = 0;
+    let selectedHeroStats = selectedHero.powerstats;
+    let randomHeroStats = randomHeroData.powerstats;
+    
+    setTotalSelectedHeroPower(0);
+    setTotalRandomHeroPower(0);
 
     for (let stat in selectedHeroStats) {
       const power = selectedHeroStats[stat];
-      totalSelectedHeroPower += power !== null && !isNaN(power) ? parseInt(power) : 0;
+      setTotalSelectedHeroPower(prevPower => prevPower + (power !== null && !isNaN(power) ? parseInt(power) : 0));
     }
     if (totalSelectedHeroPower === null || isNaN(totalSelectedHeroPower)) {
-      totalSelectedHeroPower = 1;
+      setTotalSelectedHeroPower(1);
     }
     
     for (let stat in randomHeroStats) {
       const power = randomHeroStats[stat];
-      totalRandomHeroPower += power !== null && !isNaN(power) ? parseInt(power) : 0;
+      setTotalRandomHeroPower(prevPower => prevPower + (power !== null && !isNaN(power) ? parseInt(power) : 0));
     }
     if (totalRandomHeroPower === null || isNaN(totalRandomHeroPower)) {
-      totalRandomHeroPower = 1;
-    }    
+      setTotalRandomHeroPower(1);
+    }
 
-    console.log('Total Power of Selected Hero:', totalSelectedHeroPower);
-    console.log('Total Power of Random Hero:', totalRandomHeroPower);
+    setShowTotalPower(true);
   };
-
 
   return (
     <>
@@ -75,8 +73,15 @@ const Fight = () => {
         handleHeroSelect={handleHeroSelect}
         handleStart={handleStart}
       />
+      {showTotalPower && (
+        <>
+          <h3>Total Power of Selected Hero: {totalSelectedHeroPower}</h3>
+          <h3>Total Power of Random Hero: {totalRandomHeroPower}</h3>
+        </>
+      )}
     </>
   );
 };
 
 export default Fight;
+
