@@ -1,5 +1,5 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Card from '../../components/Card'
 
 import './index.css'
@@ -12,7 +12,7 @@ const Home = () => {
         <Card />
         <div className='wonkyCard-button'> 
           <Card /> 
-          <button className='mainbtn'><strong>Lets Begin</strong></button>
+          <Link to='/fight'><button className='mainbtn'><strong>Lets Begin</strong></button></Link>
         </div>
         <Card />
       </div>
