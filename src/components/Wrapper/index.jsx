@@ -11,7 +11,6 @@ const PageWrapper = () => {
                 <NavLink to="/fight" style={styles}>Fight</NavLink>
             </nav>
         </header>
-        <footer>Superhero app</footer>
         <Outlet />
     </>
 };
