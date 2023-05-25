@@ -1,8 +1,33 @@
 .allCards-container {
     width: 100%;
+    margin-top: 15rem;
     display: flex;
     flex-wrap: wrap;
 }
 .title {
     font-size: 6rem;
+}
+.wonkyCard-button {
+    margin-top: -8rem;
+}
+.mainbtn {
+    background-color: #ECD444;
+    width: 10rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    -webkit-border-radius: 0.5rem;
+    -moz-border-radius: 0.5rem;
+    -ms-border-radius: 0.5rem;
+    -o-border-radius: 0.5rem;
+    margin-top: 4rem;
+    cursor: pointer;
+}
+.mainbtn strong {
+    color: black;
+    font-size: 1.1rem;
+}
+
+.mainbtn:hover {
+    background-color: #eecc0a;
 }
