@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-const styles = ({ isActive }) => ({ color: isActive ? '#ECD444' : 'black'});
-
+const styles = ({ isActive }) => ({ color: isActive ? '#ECD444' : '#f0f8ff'});
+import './index.css'
 const PageWrapper = () => {
     return <>
         <header>
@@ -11,7 +11,6 @@ const PageWrapper = () => {
                 <NavLink to="/fight" style={styles}>Fight</NavLink>
             </nav>
         </header>
-        <footer>Superhero app</footer>
         <Outlet />
     </>
 };

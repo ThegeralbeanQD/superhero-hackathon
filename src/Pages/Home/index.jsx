@@ -1,11 +1,18 @@
 import React from 'react'
 
-import API from '../../components/API'
+import Card from '../../components/Card'
+
+import './index.css'
+
 const Home = () => {
   return (
     <>
-      <div>Home</div>
-      <div><API/></div>
+      <h2 className='title'>Title</h2>
+      <div className='allCards-container'>
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   )
 }
