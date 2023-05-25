@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
-const styles = ({ isActive }) => ({ color: isActive ? '#ECD444' : '#FFFFFF'});
+const styles = ({ isActive }) => ({ color: isActive ? '#ECD444' : 'black'});
 
 const PageWrapper = () => {
     return <>
